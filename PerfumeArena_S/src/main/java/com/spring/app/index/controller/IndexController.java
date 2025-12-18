@@ -1,8 +1,14 @@
 package com.spring.app.index.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.spring.app.category.domain.CategoryDTO;
+import com.spring.app.item.service.ItemService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -10,10 +16,22 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequestMapping("/")
 public class IndexController {
+	
+	private final ItemService itemService;
 
 	@GetMapping("")
 	public String start() {
 		return "redirect:/index";
+	}
+	
+	// 인덱스 카테고리 불러오기
+	@GetMapping("index")
+	public String index(Model model) {
+		
+		List<CategoryDTO> categoryList = itemService.categoryList();
+		model.addAttribute("categoryList", categoryList);
+		
+		return "index";
 	}
 
 }

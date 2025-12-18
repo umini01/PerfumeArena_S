@@ -69,7 +69,7 @@ public class Datasource_semi_Configuration {
        -- 위처럼 @Qualifier("sqlsession")을 해주면 빈 이름이 sqlsession 인 SqlSessionTemplate 객체가 abc 에 주입된다.     */
 	
     @Bean
-    public PlatformTransactionManager transactionManager_final_orauser2() {
+    public PlatformTransactionManager transactionManager_semi_orauser2() {
         DataSourceTransactionManager tm = new DataSourceTransactionManager();
         tm.setDataSource(dataSource());
         return tm;

@@ -1,0 +1,14 @@
+@charset "UTF-8";
+body {position:relative;color:initial;}
+/* div.loginBox {background-color:#fff;position:fixed;top:12%;left:0.7%;max-width:280px;width:100%;display:inline-block;} */
+div.loginBox {background-color:#fff;position:fixed;top:7.3%;right:0.5%;max-width:300px;width:100%;display:inline-block;box-shadow:3px 3px 5px 2px #655b5b;}
+div.slide img {width:100%;height:104%;}
+table#loginTbl {width:100%;height:100%;}
+div#footer{margin-left:0;margin-right:0;}
+div#footer p {padding:0%;margin:0;}
+div#footer div.footerInner {display:flex;align-items:center;justify-content:center;font-size:13px;}
+input#loginid, input#loginPwd {width:73%;}
+
+.carousel-indicators {bottom:75px;}
+.carousel-indicators button {width:50px; height:7px;margin:0 30px;border:0px solid #ddd;}
+.carousel-indicators button.active {background-color:navy;}

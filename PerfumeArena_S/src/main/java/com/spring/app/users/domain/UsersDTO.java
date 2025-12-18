@@ -20,11 +20,16 @@ public class UsersDTO {
 	private String password;
 	private String email;
 	private String mobile;
+	private String postcode;
+	private String address;
+	private String addressDetail;
+	private String addressExtra;
 	private int point;
+	private String grade;
 	private LocalDateTime registerday;
 	private LocalDateTime passwordChanged;
-	private int isDormant;
-	private int isDeleted;
+	private String isDormant;
+	private String isDeleted;
 	private String role;
 	
 }

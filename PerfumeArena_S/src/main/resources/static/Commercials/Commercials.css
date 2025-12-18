@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+.carousel-inner img {
+  height: 80%;
+  object-fit: cover;
+}
+.carousel-caption h5 {
+  font-size: 2rem;
+  font-weight: bold;
+}
