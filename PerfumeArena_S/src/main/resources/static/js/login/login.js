@@ -42,7 +42,7 @@ function loginLocalStorage() {
 
 
 function LogOut(ctx_Path) { // 로그아웃 페이지로 이동~
-	location.href = `${ctx_Path}/login/logout.do`;
+	location.href = `${ctx_Path}/users/logout`;
 	sessionStorage.setItem("userOpen", "");
 }
 
@@ -50,7 +50,7 @@ function LogOut(ctx_Path) { // 로그아웃 페이지로 이동~
 function editInfo(id, ctxPath) {
 
 
-	   const url = `${ctxPath}/user/userEdit.do?id=${id}`;
+	   const url = `${ctxPath}/user/userEdit?id=${id}`;
 	   
 	   // 너비 800, 높이 680 인 팝업창을 화면 가운데 위치시키기
 	   const width = 800;

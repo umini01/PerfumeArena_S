@@ -8,19 +8,6 @@
 	String ctxPath = request.getContextPath();
 %> 
 
-<script type="text/javascript">
-	$(document).ready(function() {
-	  	// 로고 페이드 인 > 2초간 유지 > 페이드 아웃
-	  	$('#footerLogo').fadeTo(2000, 1, function() {
-	    	setTimeout(function() {
-	      		$('#splashScreen').fadeOut(800, function() {
-       				$('#mainContent').fadeIn(300); // 메인 내용 보여줌
-	      		});
-	    	}, 1000); // fadeIn 후 1초 대기
-	  	});
-	});
-</script>
-
 <style type="text/css">
     #leftSide { display: none !important; }
    	#splashScreen { 
@@ -33,6 +20,19 @@
 </style>
 
 <jsp:include page="header/header.jsp" />
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  	// 로고 페이드 인 > 2초간 유지 > 페이드 아웃
+		  	$('#footerLogo').fadeTo(2000, 1, function() {
+		    	setTimeout(function() {
+		      		$('#splashScreen').fadeOut(800, function() {
+	       				$('#mainContent').fadeIn(300); // 메인 내용 보여줌
+		      		});
+		    	}, 1000); // fadeIn 후 1초 대기
+		  	});
+		});
+	</script>
 
 	<div class="col-md-12" style="padding:0;">
 		<div class="container-fluid">		

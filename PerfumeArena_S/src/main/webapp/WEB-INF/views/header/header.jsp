@@ -197,10 +197,10 @@
 
 	<div class="userTab-wrapper">
 		<div class="userTab">
-			<p><a href="${pageContext.request.contextPath}/item/mallHome">전체</a></p>
-			<c:forEach var="cvo" items="${applicationScope.categoryList}" varStatus="status">
+			<p><a href="<%=ctxPath%>/item/mallHome">전체</a></p>
+			<c:forEach var="cvo" items="${categoryList}" varStatus="status">
 				<p class="categoryNo=${cvo.categoryNo}">
-					<a href="${pageContext.request.contextPath}/item/mallHome?categoryNo=${cvo.categoryNo}">
+					<a href="<%=ctxPath%>/item/mallHome?categoryNo=${cvo.categoryNo}">
 					${cvo.categoryName}
 					</a>
 				</p>
@@ -212,7 +212,7 @@
 		<div class="loginTheme">
 		
 		  	<c:if test="${empty sessionScope.loginUser}">
-				<form name="loginForm" action="<%=ctxPath%>/login/login" method="post">
+				<form name="loginForm" action="<%=ctxPath%>/users/login" method="post">
 					<table id="loginTbl">
 						<thead>
 							<tr>

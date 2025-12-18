@@ -23,5 +23,7 @@ public class ItemDAO_imple implements ItemDAO {
 		List<CategoryDTO> categoryList = sql.selectList("item.categoryList");
 		return categoryList;
 	}
+	
+	
 
 }

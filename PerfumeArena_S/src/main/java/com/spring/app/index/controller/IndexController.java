@@ -25,13 +25,31 @@ public class IndexController {
 	}
 	
 	// 인덱스 카테고리 불러오기
-	@GetMapping("index")
+	@GetMapping("index") 
 	public String index(Model model) {
-		
+		  
 		List<CategoryDTO> categoryList = itemService.categoryList();
 		model.addAttribute("categoryList", categoryList);
-		
-		return "index";
+	  
+		return "index"; 
+	}
+	 
+	// footer 오시는 길
+	@GetMapping("location")
+	public String location() {
+		return "footer/location";
+	}
+	
+	// footer 이용약관
+	@GetMapping("serviceInfo")
+	public String serviceInfo() {
+		return "footer/serviceInfo";
+	}
+	
+	// footer 개인정보처리방침
+	@GetMapping("privacyInfo")
+	public String privacyInfo() {
+		return "footer/privacyInfo";
 	}
 
 }
