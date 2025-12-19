@@ -17,4 +17,9 @@ public interface UsersService {
 	// 회원가입
 	void register(Users user);
 
+	// 아이디 찾기
+	UsersDTO findByNameAndEmail(String name, String email);
+
+	
+
 }

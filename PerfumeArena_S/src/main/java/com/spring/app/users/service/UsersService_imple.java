@@ -100,6 +100,23 @@ public class UsersService_imple implements UsersService {
 		usersRepository.save(user);
 	}
 
+	// 아이디 찾기
+	@Override
+	public UsersDTO findByNameAndEmail(String name, String email) {
+		
+		String encryptEmail = "";
+		try {
+			aes = new AES256(SecretMyKey.KEY);
+			encryptEmail = aes.encrypt(email.trim());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return usersRepository.findByNameAndEmail(name.trim(), encryptEmail)
+							  .map(Users::toDTO)
+							  .orElse(null);
+	}
+
+	
 	
 	
 	

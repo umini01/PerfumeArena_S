@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 전체 배경 스타일 */
+body {
+  background-color: #f5f3ff;
+  background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-floral-pattern_23-2148931052.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+}
+
+#headerNav {
+  position: relative;
+}
+
+/* 전체 컨테이너 */
+#idFindWrap {
+  margin: 7% auto 17%;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* 상단 타이틀 */
+#idTitle {
+  text-align: center;
+  padding: 4% 0;
+  background: #bf83fb;
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-bottom: 1%;
+  font-weight: 600;
+  font-size: 15pt;
+}
+
+/* 폼 박스 */
+#idFindFrm {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  padding-bottom: 20px;
+}
+
+/* 라인별 입력 영역 */
+#idFindFrm .inputRow {
+  display: flex;
+  align-items: center;
+  padding: 15px 25px;
+}
+
+/* 라벨 */
+#idFindFrm .inputRow label {
+  width: 80px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* 인풋박스 */
+#idFindFrm .inputRow input {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 1rem;
+  margin-left: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 버튼 영역 */
+#submitBtnBox {
+  text-align: center;
+}
+
+/* 버튼 */
+#submitBtn {
+  width: 30%;
+  margin: 10px auto 25px;
+  text-align: center;
+  background-color: #c084fc !important;
+  border: 0px solid #fff !important;
+  padding: 8px 0;
+  font-weight: 600;
+  color: white;
+}
+
+.btn.btn-success {width: 100%;margin: 25px 0 0;}
+	body {background-color: #f5f3ff;background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-floral-pattern_23-2148931052.jpg);background-size: cover;background-position: center;background-attachment: fixed;background-blend-mode: overlay;}
+	#idBox{background-color:#fff;}

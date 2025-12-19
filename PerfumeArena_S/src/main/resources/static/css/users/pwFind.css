@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+body {background-color: #f5f3ff;background-image: url(https://img.freepik.com/free-vector/hand-painted-watercolor-floral-pattern_23-2148931052.jpg);background-size: cover;background-position: center;background-attachment: fixed;background-blend-mode: overlay;}
+
+.headerNav {position:relative;}
+.pwFindWrap {margin:7% auto;max-width:500px;width:100%;}
+.pwFindWrap .pwContain {text-align: center;padding: 4% 0;background: #bf83fb;color: #fff;border-top-left-radius: 10px;border-top-right-radius: 10px;margin-bottom: 1%;font-weight: 600;font-size: 15pt;}
+.pwFindWrap > #pwFindFrm {border:1px solid #ddd;border-radius:10px;background-color:#fff;}
+.pwFindWrap > #pwFindFrm > .pwBox {display:flex;align-items:center;padding:0 25px;}
+.pwFindWrap > #pwFindFrm > .pwBox input {width:100%;margin:15px 0;}
+.pwFindWrap > #pwFindFrm > .pwBox p {max-width:150px;width:100%;}
+.submitBtn {text-align:center;}
+.btn.btn-success {width: 30%;margin: 10px auto 25px;text-align: center;}
+
+@media screen and (max-width:1200px) {
+	.pwFindWrap {margin: 7% auto 17%;}
+}
+
+@media screen and (max-width:700px) {
+	.pwFindWrap {margin: 7% auto 22%;}
+}
+
+@media screen and (max-width:550px) {
+	.pwFindWrap {margin: 11% auto 25%;}
+}
+
+@media screen and (max-width:500px) {
+	.pwFindWrap {margin: 13% auto 28%;}
+}

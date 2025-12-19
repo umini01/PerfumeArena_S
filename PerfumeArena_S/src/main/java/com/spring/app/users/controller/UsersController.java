@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,6 +131,37 @@ public class UsersController {
 		
 		return map;
 	}
+	
+	// 아이디 찾기 폼
+	@GetMapping("idFind")
+	public String idFind() {
+		return "login/idFind";
+	}
+	
+	// 아이디 찾기
+	@PostMapping("idFind")
+	public String idFind(@RequestParam(name="name") String name,
+						 @RequestParam(name="email") String email,
+						 Model model, HttpServletRequest request) {
+		
+		UsersDTO users = usersService.findByNameAndEmail(name, email);
+		
+		if(users != null) {
+			model.addAttribute("users", users.getId());
+		}
+		
+		request.setAttribute("method", "POST");
+		
+		return "login/idFind";
+	}
+	
+	// 비밀번호 찾기
+	@GetMapping("passwordFind")
+	public String passwordFind() {
+		return "login/passwordFind";
+	}
+	
+	
 	
 	
 	

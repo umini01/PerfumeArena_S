@@ -1,5 +1,7 @@
 package com.spring.app.users.model;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.spring.app.entity.Users;
@@ -11,5 +13,12 @@ public interface UsersRepository extends JpaRepository<Users, String> {
 
 	// 이메일 중복 확인
 	boolean existsByEmail(String encryptedEmail);
+
+	// 아이디 찾기
+	Optional<Users> findByNameAndEmail(String name, String email);
+
+	
+	
+
 
 }
