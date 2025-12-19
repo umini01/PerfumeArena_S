@@ -240,7 +240,7 @@
 									<a href="<%=ctxPath%>/login/idFind" style="cursor: pointer;">아이디찾기</a> 
 									/
 									<a href="<%=ctxPath%>/login/passwordFind" style="cursor: pointer;">비밀번호찾기</a>
-									<a href="<%=ctxPath%>/user/userRegister" style="margin-left:30px;">회원가입</a>
+									<a href="<%=ctxPath%>/users/userRegister" style="margin-left:30px;">회원가입</a>
 								</td>
 							</tr>
 

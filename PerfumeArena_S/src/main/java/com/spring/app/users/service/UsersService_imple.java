@@ -59,5 +59,51 @@ public class UsersService_imple implements UsersService {
 		
 		return usersDto;
 	}
+	
+	// 아이디 중복 확인
+	@Override
+	public boolean isIdExists(String id) {
+		return usersRepository.existsById(id);
+	}
 
+	// 이메일 중복 확인
+	@Override
+	public boolean isEmailExists(String email) {
+		
+		try {
+			aes = new AES256(SecretMyKey.KEY);
+			
+			String encryptedEmail = aes.encrypt(email);
+			return usersRepository.existsByEmail(encryptedEmail);
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	// 회원가입
+	@Override
+	public void register(Users user) {
+		
+		try {
+			
+			aes = new AES256(SecretMyKey.KEY);
+			user.setMobile(aes.encrypt(user.getMobile()));
+			user.setEmail(aes.encrypt(user.getEmail()));
+			user.setPassword(Sha256.encrypt(user.getPassword()));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		usersRepository.save(user);
+	}
+
+	
+	
+	
+	
+	
+	
 }

@@ -67,10 +67,10 @@ public class Users {
 			insertable = false)
 	private LocalDateTime passwordChanged;
 	
-	@Column(name = "isdormant", nullable = false)
+	@Column(name = "isdormant")
 	private String isDormant;
 	
-	@Column(name = "isdeleted", nullable = false)
+	@Column(name = "isdeleted")
 	private String isDeleted;
 	
 	public UsersDTO toDTO() {
