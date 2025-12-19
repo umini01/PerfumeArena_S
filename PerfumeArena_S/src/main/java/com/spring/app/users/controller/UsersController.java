@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.app.entity.Users;
+import com.spring.app.mail.controller.GoogleMail;
 import com.spring.app.users.domain.UsersDTO;
 import com.spring.app.users.service.UsersService;
 
@@ -25,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 public class UsersController {
 	
 	private final UsersService usersService;
+	private final GoogleMail mail;
 	
 	// 로그인 폼
 	@GetMapping("login")
@@ -155,15 +157,110 @@ public class UsersController {
 		return "login/idFind";
 	}
 	
-	// 비밀번호 찾기
+	// 비밀번호 찾기 폼
 	@GetMapping("passwordFind")
 	public String passwordFind() {
 		return "login/passwordFind";
 	}
 	
+	// 비밀번호 찾기
+	@PostMapping("passwordFind")
+	public String passwordFind(@RequestParam(name="id") String id,
+							   @RequestParam(name="email") String email,
+							   HttpServletRequest request, HttpSession session) {
+		// 1. 유저 존재 여부 확인
+        Users users = usersService.findByIdAndEmail(id, email);
+
+        if(users == null) {
+        	request.setAttribute("n", 0);
+            request.setAttribute("method", "POST");
+            return "login/pwdFind"; 
+        }
+        
+        // 2. 인증코드 생성 (6자리 랜덤 숫자)
+        String certification_code = String.valueOf((int)(Math.random() * 900000) + 100000);
+
+        // 3. 세션에 저장 
+        session.setAttribute("certification_code", certification_code);
+        
+        // 4. 메일 전송
+        try {
+        	mail.send_certification_code(email, certification_code);
+        	
+			request.setAttribute("n", 1); 
+        	
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("n", 0);
+        }
+
+        // JSP에서 보여줄 값 세팅
+        request.setAttribute("id", id);
+        request.setAttribute("email", email);
+        request.setAttribute("method", "POST");
+
+        return "login/passwordFind";
+        
+	}
 	
+	// 이메일 인증코드 인증
+	@PostMapping("verifyCertification")
+	public String verifyCertification(@RequestParam(name="userCertificationCode") String userCertificationCode,
+									  @RequestParam(name="id") String id,
+									  HttpSession session,
+									  HttpServletRequest request) {
+
+		String certification_code = (String) session.getAttribute("certification_code");
+		
+		String message = "";
+		String loc = "";
+		
+		if(certification_code != null && certification_code.equals(userCertificationCode)) {
+		
+			message = "인증이 성공되었습니다.";
+			loc = request.getContextPath() + "/users/pwdUpdate?id=" + id;
+		
+		}
+		else {
+		
+		message = "발급된 인증코드가 아닙니다. 인증코드를 다시 발급받으세요.";
+		loc = request.getContextPath() + "/users/passwordFind";
+		
+		}
+		
+		request.setAttribute("id", id);
+		request.setAttribute("message", message);
+		request.setAttribute("loc", loc);
+		
+		session.removeAttribute("certification_code");
+		
+		return "msg";
+	}
 	
+	// 비밀번호 변경 폼
+	@GetMapping("pwdUpdate")
+	public String pwdUpdateForm(@RequestParam(name="id") String id
+			      			  , Model model) {
+		model.addAttribute("id", id);
+		return "login/passwordUpdate";
+	}
 	
+	// 비밀번호 변경
+	@PostMapping("passwordUpdate")
+	public String pwdUpdate(@RequestParam(name="id") String id
+						  , @RequestParam(name="newPassword2") String newPassword
+						  , HttpServletRequest request) {
+		
+		usersService.updatePassword(id, newPassword);
+		
+		String message = "비밀번호가 변경되었습니다.";
+		String loc = request.getContextPath() + "/index";
+		
+		request.setAttribute("message", message);
+		request.setAttribute("loc", loc);
+		
+		return "msg";
+	}
 	
 	
 }

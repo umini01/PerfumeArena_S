@@ -1,5 +1,8 @@
 package com.spring.app.users.service;
 
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -114,6 +117,31 @@ public class UsersService_imple implements UsersService {
 		return usersRepository.findByNameAndEmail(name.trim(), encryptEmail)
 							  .map(Users::toDTO)
 							  .orElse(null);
+	}
+
+	// 비밀번호 찾기
+	@Override
+	public Users findByIdAndEmail(String id, String email) {
+		String encryptEmail = "";
+    	try {
+    		aes = new AES256(SecretMyKey.KEY);
+    		encryptEmail = aes.encrypt(email.trim());
+		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
+			e.printStackTrace();
+		}
+    	return usersRepository.findByIdAndEmail(id, encryptEmail);
+	}
+
+	// 비밀번호 변경
+	@Override
+	public void updatePassword(String id, String newPassword) {
+		Users user = usersRepository.findById(id).orElseThrow(() -> new RuntimeException("사용자를 찾을 수 없습니다."));
+	       
+	       user.setPassword(Sha256.encrypt(newPassword));
+	      
+	       user.setPasswordChanged(LocalDateTime.now());   // 변경일 갱신
+
+	       usersRepository.save(user);
 	}
 
 	

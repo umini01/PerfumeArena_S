@@ -20,6 +20,12 @@ public interface UsersService {
 	// 아이디 찾기
 	UsersDTO findByNameAndEmail(String name, String email);
 
+	// 비밀번호 찾기
+	Users findByIdAndEmail(String id, String email);
+
+	// 비밀번호 변경
+	void updatePassword(String id, String newPassword);
+
 	
 
 }
