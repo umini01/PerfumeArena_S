@@ -31,8 +31,8 @@
 
 <div class="adminTab-wrapper">
 	<div class="adminTab">
-		<p><a href="<%= ctxPath %>/user/admin/userList">회원목록 전체보기</a></p>
-		<p><a href="<%= ctxPath %>/item/admin/itemRegister">제품 등록하기</a></p>
-		<p><a href="<%= ctxPath %>/shop/admin/chart">주문통계 차트보기</a></p>
+		<p><a href="<%= ctxPath %>/admin/usersList">회원목록 전체보기</a></p>
+		<p><a href="<%= ctxPath %>/admin/itemRegister">제품 등록하기</a></p>
+		<p><a href="<%= ctxPath %>/admin/chart">주문통계 차트보기</a></p>
 	</div>
 </div>
