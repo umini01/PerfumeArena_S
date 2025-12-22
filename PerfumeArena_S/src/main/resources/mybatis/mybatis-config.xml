@@ -6,6 +6,7 @@
 	<!-- domain(DTO) package -->
 	<typeAliases>
 		<typeAlias type="com.spring.app.category.domain.CategoryDTO" alias="CategoryDTO" />
+		<typeAlias type="com.spring.app.shop.domain.ItemDTO" alias="ItemDTO" />
 	</typeAliases>
 
 </configuration>

@@ -9,18 +9,23 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.app.admin.service.AdminService;
 import com.spring.app.common.MyUtil;
+import com.spring.app.shop.domain.ItemDTO;
+import com.spring.app.shop.service.ItemService;
 import com.spring.app.users.domain.UsersDTO;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -29,6 +34,7 @@ import lombok.RequiredArgsConstructor;
 public class AdminController {
 	
 	private final AdminService adminService;
+	private final ItemService itemService;
 	
 	// 회원 목록 보기
 	@GetMapping("usersList")
@@ -162,5 +168,51 @@ public class AdminController {
 	}
 	
 	
-
+	// 제품 등록하기 폼
+	@GetMapping("itemRegister")
+	public String itemRegister() {
+		return "admin/itemRegister";
+	}
+	
+	
+	// 제품 등록하기
+	@PostMapping("itemRegister")
+	@ResponseBody
+	public Map<String, Object> itemRegister(@RequestParam(name="itemPhotoPath") MultipartFile itemPhoto,
+											@RequestParam(name="infoImg") MultipartFile infoImg,
+											@ModelAttribute ItemDTO itemDto, HttpSession session) {
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		try {
+			int n = itemService.itemRegister(itemDto, itemPhoto, infoImg, session);
+			map.put("result", n);
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("result", 0);
+		}
+		
+		return map;
+	}
+	
+	
+	// 통계 페이지
+	@GetMapping("chart")
+	public String chart() {
+		return "admin/chart";
+	}
+	
+	
+	// 카테고리별 주문 통계
+	@GetMapping("myPurchase_byCategoryJSON")
+	@ResponseBody
+	public String myPurchase_byCategoryJSON() {
+		return "";
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.spring.app.category.domain.CategoryDTO;
+import com.spring.app.shop.domain.ItemDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,6 +23,13 @@ public class ItemDAO_imple implements ItemDAO {
 	public List<CategoryDTO> categoryList() {
 		List<CategoryDTO> categoryList = sql.selectList("item.categoryList");
 		return categoryList;
+	}
+
+	// 제품 등록
+	@Override
+	public int itemRegister(ItemDTO itemDto) {
+		int n = sql.insert("item.itemRegister", itemDto);
+		return n;
 	}
 	
 	
