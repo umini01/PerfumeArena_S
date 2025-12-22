@@ -80,3 +80,8 @@ server:
       charset: UTF-8
       enabled: true #http 인코딩 지원을 활성화할지 여부
       force: true #post 방식으로 전송했을때 한글데이터가 안깨지도록 함. # Spring Framework 에서는 web.xml 파일에서 filter 태그를 등록시켜 주었음.
+
+coolsms:
+  api-key: NCSE8ZY9FPICT0IH
+  api-secret: FLQ9ADWJCMPVHGYINE6NL7DOEDYBLD4P
+  from: 01049221986

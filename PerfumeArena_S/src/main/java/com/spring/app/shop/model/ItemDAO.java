@@ -1,4 +1,4 @@
-package com.spring.app.item.model;
+package com.spring.app.shop.model;
 
 import java.util.List;
 

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.app.category.domain.CategoryDTO;
-import com.spring.app.item.service.ItemService;
+import com.spring.app.shop.service.ItemService;
 
 import lombok.RequiredArgsConstructor;
 

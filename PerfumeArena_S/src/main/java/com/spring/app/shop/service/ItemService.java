@@ -1,4 +1,4 @@
-package com.spring.app.item.service;
+package com.spring.app.shop.service;
 
 import java.util.List;
 

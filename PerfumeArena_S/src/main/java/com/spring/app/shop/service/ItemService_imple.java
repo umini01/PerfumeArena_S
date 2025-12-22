@@ -1,11 +1,11 @@
-package com.spring.app.item.service;
+package com.spring.app.shop.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.spring.app.category.domain.CategoryDTO;
-import com.spring.app.item.model.ItemDAO;
+import com.spring.app.shop.model.ItemDAO;
 
 import lombok.RequiredArgsConstructor;
 
